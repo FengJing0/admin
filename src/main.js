@@ -14,6 +14,12 @@ import '@/assets/library/font-awesome-4.7.0/css/font-awesome.min.css'
 // 代码高亮主题
 import '@/assets/library/highlight/styles/atom-one-light.css'
 
+// 全局注册的组件
+import '@/components'
+
+// 异步请求库
+import '@/plugin/axios'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
