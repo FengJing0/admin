@@ -1,17 +1,11 @@
 export default [
   {
-    path: '/',
+    path: '/demo',
     component: () => import('@/components/core/MainLayout/index.vue'),
+    meta: {requiresAuth: true},
     redirect: {
       name: 'index'
-    },
-    children: [
-      {
-        path: 'index',
-        name: 'index',
-        component: () => import('@/pages/core/index/index.vue')
-      }
-    ]
+    }
   },
   {
     path: '/login',

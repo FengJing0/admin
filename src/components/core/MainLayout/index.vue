@@ -14,11 +14,12 @@ export default {
     HeaderRight: () => import('./components/HeaderRight'),
     SideMenu: () => import('./components/SideMenu')
   },
-  mounted () {
+  mounted () {},
+  data () {
+    return {}
   }
 }
 </script>
 
 <style scoped>
-
 </style>

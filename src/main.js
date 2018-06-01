@@ -11,6 +11,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 // font-awesome
 import '@/assets/library/font-awesome-4.7.0/css/font-awesome.min.css'
 
+// vuex
+import store from '@/store/index.js'
+
 // 代码高亮主题
 import '@/assets/library/highlight/styles/atom-one-light.css'
 
@@ -31,6 +34,7 @@ new Vue({
   el: '#app',
   // i18n,
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
