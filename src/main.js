@@ -17,6 +17,9 @@ import store from '@/store/index.js'
 // 代码高亮主题
 import '@/assets/library/highlight/styles/atom-one-light.css'
 
+// markdown主题
+import 'github-markdown-css'
+
 // 全局注册的组件
 import '@/components'
 

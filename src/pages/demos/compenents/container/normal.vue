@@ -1,11 +1,6 @@
 <template>
-  <h1>normal</h1>
+  <Container>
+    <template slot="header">卡片</template>
+    <Markdown url="/static/md/组件 - 页面容器 - 基础.md"></Markdown>
+  </Container>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style scoped>
-
-</style>

@@ -65,6 +65,32 @@ export const menu = {
           component: () => import('@/pages/demos/compenents/container/card-full.vue')
         }
       ]
+    },
+    {
+      title: '编辑器',
+      icon: 'font',
+      children: [
+        {
+          title: '富文本',
+          icon: 'file-o',
+          path: 'editor/quill',
+          name: 'demo-components-editor-quill',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/editor/quill/demo.vue')
+        },
+        {
+          title: 'markdown',
+          icon: 'file-o',
+          path: 'editor/markdown',
+          name: 'demo-components-editor-markdown',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/editor/markdown/demo.vue')
+        }
+      ]
     }
   ]
 }
