@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu :collapse="collapse">
+    <el-menu :collapse="collapse" :unique-opened="true" class="dd-side-menu">
       <template v-for="(menu, index) in sideMenu">
         <!--没有子菜单-->
         <el-menu-item
@@ -13,7 +13,7 @@
         <!--有子菜单-->
         <el-submenu
           :key="index"
-          :index="`${menu.title}${index}`"
+          :index="String(index)"
           v-if="menu.children">
           <template slot="title">
             <i v-if="menu.icon" :class="'fa fa-'+menu.icon"></i>
@@ -21,7 +21,7 @@
           </template>
           <el-menu-item
             :key="menuItemIndex"
-            :index="`${menuItem.name}${menuItemIndex}`"
+            :index="`${index}-${menuItemIndex}`"
              v-for="(menuItem, menuItemIndex) in menu.children"
             @click.native="active(menuItem)"
             :class="{'is-active': menuItem.name === routeName}">
@@ -71,3 +71,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  /*.dd-side-menu:not(.el-menu--collapse) {*/
+    /*width: 200px;*/
+    /*min-height: 400px;*/
+  /*}*/
+</style>
