@@ -34,23 +34,36 @@ export default {
     }
   },
   mounted () {
-    if (this.md) {
-      this.initWithMd()
-    } else if (this.url) {
-      this.initWithUrl()
+    this.which()
+  },
+  watch: {
+    md () {
+      this.which()
     }
   },
   methods: {
+    // 判断用哪种方式渲染
+    which () {
+      if (this.md) {
+        this.initWithMd()
+      } else if (this.url) {
+        this.initWithUrl()
+      }
+    },
+    // 渲染md获得的文本
     initWithMd () {
       this.markedHTML = this.marked(this.md)
     },
+    // 渲染从url获得的文本
     async initWithUrl () {
       this.markedHTML = await this.getReadme(this.url)
     },
+    // 异步获取url中的文本
     async getReadme (url) {
       const data = await this.$axios.get(url)
       return this.marked(data)
     },
+    // 编译
     marked (data) {
       const renderer = new marked.Renderer()
       renderer.blockquote = (quote) => {

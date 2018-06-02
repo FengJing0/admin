@@ -1,18 +1,28 @@
 <template>
   <Container type="ghost">
-    <el-card>
-      <template slot="header">
-        基本示例
-      </template>
+    <el-card class="dd-mb">
+      <template slot="header">基本示例</template>
+      <SimpleMDE v-model="text" ref="dd"></SimpleMDE>
     </el-card>
-
+    <el-card>
+      <template slot="header">输出</template>
+      <Markdown :md="text"></Markdown>
+    </el-card>
   </Container>
 </template>
 
 <script>
-export default {}
+import text from './text'
+export default {
+  data () {
+    return {
+      text
+    }
+  },
+  watch: {
+    text (vs, ss) {
+      console.log(this.$refs.dd)
+    }
+  }
+}
 </script>
-
-<style scoped>
-
-</style>

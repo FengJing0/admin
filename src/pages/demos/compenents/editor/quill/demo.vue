@@ -1,7 +1,10 @@
 <template>
-  <div>
-    quill
-  </div>
+  <Container type="ghost">
+    <el-card>
+      <template slot="header">quill</template>
+      <QuillEditor></QuillEditor>
+    </el-card>
+  </Container>
 </template>
 
 <script>

@@ -20,6 +20,9 @@ import '@/assets/library/highlight/styles/atom-one-light.css'
 // markdown主题
 import 'github-markdown-css'
 
+// simplemde css
+import 'simplemde/dist/simplemde.min.css'
+
 // 全局注册的组件
 import '@/components'
 
