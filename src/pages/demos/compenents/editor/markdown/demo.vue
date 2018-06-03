@@ -13,6 +13,7 @@
 
 <script>
 import text from './text'
+
 export default {
   data () {
     return {
@@ -20,7 +21,7 @@ export default {
     }
   },
   watch: {
-    text (vs, ss) {
+    text () {
       console.log(this.$refs.dd)
     }
   }

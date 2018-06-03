@@ -67,6 +67,9 @@ export default {
       this.$router.push({
         name: item.name
       })
+    },
+    test () {
+      console.log()
     }
   }
 }

@@ -91,6 +91,69 @@ export const menu = {
           component: () => import('@/pages/demos/compenents/editor/markdown/demo.vue')
         }
       ]
+    },
+    {
+      title: '图标',
+      icon: 'font-awesome',
+      children: []
+    },
+    {
+      title: 'markdown解析',
+      icon: 'font',
+      children: [
+        {
+          title: '效果演示',
+          icon: 'file-o',
+          path: 'markdown/demo',
+          name: 'demo-components-markdown-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/markdown/demo.vue')
+        },
+        {
+          title: '文档',
+          icon: 'file-o',
+          path: 'markdown/doc',
+          name: 'demo-components-markdown-doc',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/markdown/doc.vue')
+        }
+      ]
+    },
+    {
+      title: '数字动画',
+      icon: 'magic',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'countup/demo',
+          name: 'demo-components-countup-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/countup/demo.vue')
+        }
+      ]
+    },
+    {
+      title: '代码高亮',
+      icon: 'code',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'highlight/demo',
+          name: 'demo-components-highlight-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/highlight/demo.vue')
+        }
+      ]
     }
   ]
 }
