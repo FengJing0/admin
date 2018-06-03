@@ -19,24 +19,31 @@ export default {
 
 <style lang="scss" scoped>
   @import "@/assets/style/public.scss";
+
   .page {
-    .el-card {
-      @extend %unable-select;
-        margin-bottom: $margin;
-        .group {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          span {
-            font-size: 60px;
-          &.end {
-             padding: 0px 20px;
-             border-radius: 4px;
-             background-color: $color-success;
-             color: #FFF;
-           }
-        }
-      }
-    }
+
+  .el-card {
+  @extend % unable-select;
+    margin-bottom: $ margin;
+
+  .group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  span {
+    font-size: 60px;
+
+  &
+  .end {
+    padding: 0px 20px;
+    border-radius: 4px;
+    background-color: $ color-success;
+    color: #FFF;
+  }
+
+  }
+  }
+  }
   }
 </style>
