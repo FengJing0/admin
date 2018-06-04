@@ -45,6 +45,13 @@ export default {
       c: null
     }
   },
+  watch: {
+    end (value) {
+      if (this.c && this.c.update) {
+        this.c.update(value)
+      }
+    }
+  },
   mounted () {
     this.init()
   },
@@ -63,11 +70,35 @@ export default {
           this.options
         )
         if (!this.c.error) {
-          this.c.start();
+          this.c.start(() => {
+            this.callback(this.c)
+          })
         } else {
           console.error(this.c.error)
         }
       }
+    }
+  },
+  start (callback) {
+    if (this.c && this.c.start) {
+      this.c.start(() => {
+        callback && callback(this.c)
+      })
+    }
+  },
+  pauseResume () {
+    if (this.c && this.c.pauseResume) {
+      this.c.pauseResume()
+    }
+  },
+  reset () {
+    if (this.c && this.c.reset) {
+      this.c.reset()
+    }
+  },
+  update (newEndVal) {
+    if (this.c && this.c.update) {
+      this.c.update(newEndVal)
     }
   }
 }

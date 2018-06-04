@@ -23,6 +23,9 @@ import 'github-markdown-css'
 // simplemde css
 import 'simplemde/dist/simplemde.min.css'
 
+// svg图标
+import '@/assets/icons/index.js'
+
 // 全局注册的组件
 import '@/components'
 

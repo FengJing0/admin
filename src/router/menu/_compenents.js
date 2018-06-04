@@ -95,7 +95,38 @@ export const menu = {
     {
       title: '图标',
       icon: 'font-awesome',
-      children: []
+      children: [
+        {
+          title: 'FontAwesome',
+          icon: 'file-o',
+          path: 'icon/list',
+          name: 'demo-components-icon-list',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/icon/list.vue')
+        },
+        {
+          title: '图标组件',
+          icon: 'file-o',
+          path: 'icon/icon',
+          name: 'demo-components-icon-icon',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/icon/icon.vue')
+        },
+        {
+          title: 'SVG图标组件',
+          icon: 'file-o',
+          path: 'icon/svg',
+          name: 'demo-components-icon-svg',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/icon/svg.vue')
+        }
+      ]
     },
     {
       title: 'markdown解析',
