@@ -125,6 +125,16 @@ export const menu = {
             requiresAuth: true
           },
           component: () => import('@/pages/demos/compenents/icon/svg.vue')
+        },
+        {
+          title: '图标选择器',
+          icon: 'file-o',
+          path: 'icon/select',
+          name: 'demo-components-icon-select',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/compenents/icon/select.vue')
         }
       ]
     },
