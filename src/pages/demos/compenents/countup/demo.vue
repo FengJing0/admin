@@ -93,8 +93,8 @@ export default {
           font-size: 60px;
 
           &.end {
-            padding: 0px 20px;
-            border-radius: 4px;
+            padding: 0px $margin;
+            border-radius: $border-radius;
             background-color: $color-success;
             color: #FFF;
           }

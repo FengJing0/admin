@@ -7,7 +7,3 @@
     </PageIndexArticle>
   </Container>
 </template>
-
-<script>
-export default {}
-</script>

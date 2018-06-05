@@ -9,23 +9,46 @@
       <el-input
         :placeholder="placeholder"
         v-model="searchText"
-        prefix-icon="el-icon-search"></el-input>
+        prefix-icon="el-icon-search"
+        v-if="!userInput"></el-input>
       <el-collapse v-model="activeName" accordion class="group">
         <el-collapse-item
-          v-for="(iconList,index) in Icon"
+          v-for="(iconList,index) in iconFilted"
           :key="index" :title="iconList.title"
           :name="index"
           class="class">
-          <el-row :gutter="10" class="class-row">
+          <el-row class="class-row">
             <el-col :span="4" v-for="(iconItem,iconIndex) in iconList.icon" :key="iconIndex" class="class-col" @click.native="selectIcon(iconItem)">
-              <Icon :name="iconItem"></Icon>
+              <el-tooltip effect="dark" placement="top" :content="iconItem">
+                <Icon :name="iconItem"></Icon>
+              </el-tooltip>
             </el-col>
           </el-row>
         </el-collapse-item>
       </el-collapse>
     </el-popover>
-    <el-button v-popover:pop>click me</el-button>
-    <el-button>clear</el-button>
+    <div class="dd-clearfix">
+      <el-button v-popover:pop type="primary" v-if="!userInput" class="dd-fl">
+        <Icon :name="currentValue"></Icon>
+        {{value || '请选择'}}
+      </el-button>
+      <el-input
+        v-else
+        class="dd-fl"
+        style="max-width: 200px;"
+        v-model="searchText2"
+        clearable>
+        <el-button slot="append" v-popover:pop>
+          <i class="fa fa-list"></i>
+        </el-button>
+      </el-input>
+      <el-button
+        @click="clear"
+        type="danger"
+        v-if="clearable"
+        icon="el-icon-delete"
+        class="dd-fl dd-ml">清空</el-button>
+    </div>
   </div>
 </template>
 
@@ -46,13 +69,25 @@ export default {
       default: 'right'
     },
     // 占位符
-    placeholder:{
+    placeholder: {
       type: String,
       required: false,
       default: '搜索'
     },
     // 是否在选择后关闭
     autoClose: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+    // 是否允许用户输入
+    userInput: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    // 是否允许清空
+    clearable: {
       type: Boolean,
       required: false,
       default: true
@@ -65,17 +100,46 @@ export default {
       pop: false,
       // 搜索的文字
       searchText: '',
+      searchText2: '',
       // 组件内输入框的值
       currentValue: '',
-      activeName: '0'
+      activeName: [ ]
+    }
+  },
+  computed: {
+    iconFilted () {
+      let text = this.userInput ? this.searchText2 : this.searchText
+      if (text === '') {
+        return this.Icon
+      } else {
+        return this.Icon.map(iconClass => ({
+          title: iconClass.title,
+          icon: iconClass.icon.filter(icon => icon.indexOf(text.toLowerCase()) >= 0)
+        })).filter(iconClass => iconClass.icon.length > 0)
+      }
     }
   },
   methods: {
     selectIcon (iconName) {
       this.$emit('input', iconName)
-      if(iconName && this.autoClose){
+      this.currentValue = iconName
+      this.searchText2 = iconName
+      if (iconName && this.autoClose) {
         this.pop = false
       }
+    },
+    clear () {
+      this.currentValue = ''
+      this.searchText2 = ''
+      this.$emit('input', '')
+    }
+  },
+  created () {
+    this.currentValue = this.value.toLowerCase()
+  },
+  watch: {
+    searchText2 (value) {
+      this.$emit('input', value)
     }
   }
 }
@@ -83,6 +147,9 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/style/public.scss';
+.el-button+.el-button{
+  margin-left: $margin;
+}
 .group{
   max-height: 400px;
   overflow-x: hidden;
@@ -99,9 +166,9 @@ export default {
         cursor:pointer;
         &:hover{
           color: $color-text-main;
-          font-size: 26px;
+          font-size: 28px;
            background-color: $color-bg;
-           border-radius: 4px;
+           border-radius: $border-radius;
            box-shadow: inset 0px 0px 0px 1px $color-border-1;
          }
       }

@@ -53,7 +53,7 @@ export default {
   transition: all .2s linear;
 }
 .icon-title{
-  font-size: 14px;
+  font-size: $font-size-sub;
   color: $color-text-placehoder
 }
 </style>

@@ -6,7 +6,8 @@
         <el-menu-item
           :key="index"
           :index="String(index)"
-          v-if="!menu.children && menu.title">
+          v-if="!menu.children && menu.title"
+          @click.native="active(menu)">
           <i v-if="menu.icon" :class="'fa fa-'+menu.icon"></i>
           <span slot="title">{{menu.title}}</span>
         </el-menu-item>

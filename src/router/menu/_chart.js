@@ -17,6 +17,26 @@ export const menu = {
         requiresAuth: true
       },
       component: () => import('@/pages/demos/chart/index/index.vue')
+    },
+    {
+      title: '所有',
+      icon: 'th',
+      path: 'all',
+      name: 'demo-chart-all',
+      meta: {
+        requiresAuth: true
+      },
+      component: () => import('@/pages/demos/chart/all/index.vue')
+    },
+    {
+      title: '动态尺寸',
+      icon: 'refresh',
+      path: 'dynamicSize',
+      name: 'demo-chart-dynamicSize',
+      meta: {
+        requiresAuth: true
+      },
+      component: () => import('@/pages/demos/chart/dynamicSize/index.vue')
     }
   ]
 }

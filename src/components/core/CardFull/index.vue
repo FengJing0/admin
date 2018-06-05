@@ -64,14 +64,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "@/assets/style/public.scss";
   .dd-card-full {
     position: absolute;
     border:1px solid #ebeef5;
     background-color: #fff;
-    border-radius: 4px;
+    border-radius: $border-radius;
     overflow: hidden;
     transition: .3s;
-    color:#303133;
+    color:$color-text-main;
     &:hover {
       box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
     }
@@ -86,7 +87,7 @@ export default {
     }
     .dd-card-full__body{
       position: absolute;
-      padding: 20px;
+      padding: $margin;
       /*width:calc(100% - 40px);*/
       left: 0;
       right: 0;

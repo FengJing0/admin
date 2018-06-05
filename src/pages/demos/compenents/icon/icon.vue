@@ -22,14 +22,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/style/public.scss';
 .icon-class-demo{
   transition: all .5s linear;
   font-size: 100px;
-  color: #409EFF;
+  color: $color-primary;
   cursor: pointer;
   user-select: none;
   &:hover{
-    color: #F56C6C;
+    color: $color-danger;
     transform: scale(1.2) rotate(360deg);
   }
 }
