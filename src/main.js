@@ -26,6 +26,9 @@ import 'simplemde/dist/simplemde.min.css'
 // svg图标
 import '@/assets/icons/index.js'
 
+// mock接口设置
+import '@/mock/register'
+
 // 全局注册的组件
 import '@/components'
 
