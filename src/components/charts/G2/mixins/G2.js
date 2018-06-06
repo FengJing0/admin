@@ -30,6 +30,7 @@ export default {
   },
   mounted () {
     this.startInit()
+    this.$emit('ready')
   },
   watch: {
     data () {

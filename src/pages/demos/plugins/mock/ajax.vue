@@ -2,12 +2,14 @@
   <Container type="ghost">
     <el-card class="dd-mb">
       <template slot="header">
-        <el-button @click="ajax">发送请求</el-button>
+        <el-button @click.native="ajax">发送请求</el-button>
       </template>
       <el-table style="width:100%" v-bind="table">
         <el-table-column
           v-for="(item, index) in table.columns"
-          :key="index"></el-table-column>
+          :key="index"
+          :prop="item.prop"
+          :label="item.label"></el-table-column>
       </el-table>
     </el-card>
     <el-card>
@@ -32,13 +34,13 @@ export default {
   methods: {
     ajax () {
       this.$axios.get('/api/ajax-demo').then(res => {
-        console.log(res)
+        this.table.columns = Object.keys(res.list[0]).map(e => ({
+          label: e,
+          prop: e
+        }))
+        this.table.data = res.list
       })
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
