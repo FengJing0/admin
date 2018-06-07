@@ -1,20 +1,85 @@
 <template>
-  <Container type="ghost">
+  <Container type="ghost" class="demo-chart-index">
     <el-row :gutter="20">
-      <el-col :span="8">
-        <el-card>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
           <ChartCardHeader
-            title="G2LineBase"
+            :title="chart[0].refName"
             slot="header"
-            @refresh="refresh"></ChartCardHeader>
+            @refresh="handleRefreshData(0)"></ChartCardHeader>
+          <G2LineBase
+            v-bind="chart[0]"
+            @ready="isReady(0)"
+            :ref="chart[0].refName"
+            :autoInit="true"></G2LineBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[1].refName"
+            slot="header"
+            @refresh="handleRefreshData(1)"></ChartCardHeader>
+          <G2LineStep
+            v-bind="chart[1]"
+            @ready="isReady(1)"
+            :ref="chart[1].refName"
+            :autoInit="true"></G2LineStep>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[2].refName"
+            slot="header"
+            @refresh="handleRefreshData(2)"></ChartCardHeader>
+          <G2ColumnBase
+            v-bind="chart[2]"
+            @ready="isReady(2)"
+            :ref="chart[2].refName"
+            :autoInit="true"></G2ColumnBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[3].refName"
+            slot="header"
+            @refresh="handleRefreshData(3)"></ChartCardHeader>
+          <G2BarBase
+            v-bind="chart[3]"
+            @ready="isReady(3)"
+            :ref="chart[3].refName"
+            :autoInit="true"></G2BarBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[4].refName"
+            slot="header"
+            @refresh="handleRefreshData(4)"></ChartCardHeader>
+          <G2PieBase
+            v-bind="chart[4]"
+            @ready="isReady(4)"
+            :ref="chart[4].refName"
+            :autoInit="true"></G2PieBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[7].refName"
+            slot="header"
+            @refresh="handleRefreshData(7)"></ChartCardHeader>
           <G2AreaBase
             v-bind="chart[7]"
             @ready="isReady(7)"
-            :ref="chart[7].refName"></G2AreaBase>
+            :ref="chart[7].refName"
+            :autoInit="true"></G2AreaBase>
         </el-card>
       </el-col>
     </el-row>
-    <div>{{ready}}</div>
   </Container>
 </template>
 
@@ -26,31 +91,31 @@ export default {
         {
           api: {url: '/api/chart/G2Line', data: {type: 'base'}},
           refName: 'G2LineBase',
-          ready: true,
+          ready: false,
           data: []
         },
         {
           api: {url: '/api/chart/G2Line', data: {type: 'step'}},
           refName: 'G2LineStep',
-          ready: true,
+          ready: false,
           data: []
         },
         {
           api: {url: '/api/chart/G2Column', data: {type: 'base'}},
           refName: 'G2ColumnBase',
-          ready: true,
+          ready: false,
           data: []
         },
         {
           api: {url: '/api/chart/G2Bar', data: {type: 'base'}},
           refName: 'G2BarBase',
-          ready: true,
+          ready: false,
           data: []
         },
         {
           api: {url: '/api/chart/G2Pie', data: {type: 'base'}},
           refName: 'G2PieBase',
-          ready: true,
+          ready: false,
           data: []
         },
         {
@@ -81,9 +146,9 @@ export default {
   },
   watch: {
     ready (ready) {
-      console.log(ready)
       if (ready) {
         this.showInfo()
+        this.syncData()
       }
     }
   },
@@ -100,8 +165,35 @@ export default {
     isReady (index) {
       this.chart[index].ready = true
     },
-    refresh () {
-      console.log('ok')
+    // 请求图表数据
+    syncData () {
+      // this.$axios.all(this.chart.map(e => this.$axios.post(e.api.url, e.api.data))).then(this.$axios.spread((...res) => {
+      //   console.log(res)
+      // }))
+      this.$axios.post(this.chart[0].api.url, this.chart[0].api.data).then(res => {
+        this.chart[0].data = res
+      })
+      this.$axios.post(this.chart[1].api.url, this.chart[1].api.data).then(res => {
+        this.chart[1].data = res
+      })
+      this.$axios.post(this.chart[2].api.url, this.chart[2].api.data).then(res => {
+        this.chart[2].data = res
+      })
+      this.$axios.post(this.chart[3].api.url, this.chart[3].api.data).then(res => {
+        this.chart[3].data = res
+      })
+      this.$axios.post(this.chart[4].api.url, this.chart[4].api.data).then(res => {
+        this.chart[4].data = res
+      })
+      this.$axios.post(this.chart[7].api.url, this.chart[7].api.data).then(res => {
+        this.chart[7].data = res
+      })
+    },
+    handleRefreshData (index) {
+      const api = this.chart[index].api
+      this.$axios.post(api.url, api.data).then(res => {
+        this.chart[index].data = res
+      })
     }
   },
   components: {
@@ -110,6 +202,6 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  @import './style.scss';
 </style>

@@ -29,7 +29,9 @@ export default {
     }
   },
   mounted () {
-    this.startInit()
+    if (this.autoInit) {
+      this.startInit()
+    }
     this.$emit('ready')
   },
   watch: {

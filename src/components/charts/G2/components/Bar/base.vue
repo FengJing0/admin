@@ -14,22 +14,13 @@ export default {
       // mixin 中提供 createChart
       this.createChart()
       this.chart.source(this.data)
-      this.chart.scale({
-        // 设置y轴最小值，不设置即显示负值
-        // y: {
-        //   min: 0
-        // },
-        x: {
-          range: [0, 1]
+      this.chart.axis('x', {
+        label: {
+          offset: 12
         }
       })
-      this.chart.tooltip({
-        crosshairs: {
-          type: 'line'
-        }
-      })
-      this.chart.area().position('x*y')
-      this.chart.line().position('x*y').size(2)
+      this.chart.coord().transpose()
+      this.chart.interval().position('x*y')
       // 渲染图表
       this.chart.render()
     },

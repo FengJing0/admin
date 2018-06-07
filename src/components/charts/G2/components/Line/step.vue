@@ -23,13 +23,7 @@ export default {
           range: [0, 1]
         }
       })
-      this.chart.tooltip({
-        crosshairs: {
-          type: 'line'
-        }
-      })
-      this.chart.area().position('x*y')
-      this.chart.line().position('x*y').size(2)
+      this.chart.line().position('x*y').shape('hv')
       // 渲染图表
       this.chart.render()
     },

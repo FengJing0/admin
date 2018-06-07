@@ -16,9 +16,9 @@ export default {
       this.chart.source(this.data)
       this.chart.scale({
         // 设置y轴最小值，不设置即显示负值
-        // y: {
-        //   min: 0
-        // },
+        y: {
+          min: 0
+        },
         x: {
           range: [0, 1]
         }
@@ -28,8 +28,11 @@ export default {
           type: 'line'
         }
       })
-      this.chart.area().position('x*y')
-      this.chart.line().position('x*y').size(2)
+      this.chart.line().position('x*y')
+      this.chart.point().position('x*y').size(4).shape('circle').style({
+        stroke: '#fff',
+        lineWidth: 1
+      })
       // 渲染图表
       this.chart.render()
     },

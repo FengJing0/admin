@@ -1,0 +1,5 @@
+import './G2Area'
+import './G2Line'
+import './G2Column'
+import './G2Bar'
+import './G2Pie'
