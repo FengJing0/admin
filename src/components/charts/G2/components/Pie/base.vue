@@ -5,10 +5,18 @@
 
 <script>
 import G2 from '@/components/charts/G2/mixins/G2'
+
 export default {
   mixins: [
     G2
   ],
+  // 新加参数 或者覆盖 mixin 中的默认参数
+  props: {
+    padding: {
+      required: false,
+      default: () => [30, 30, 30, 30]
+    }
+  },
   data () {
     return {
       // DataView数据转换设置
@@ -21,35 +29,47 @@ export default {
     }
   },
   methods: {
+    dvMaker () {
+      return new this.DataSet.DataView().source(this.data).transform(this.transformSetting)
+    },
     init () {
       // mixin 中提供 createChart
       this.createChart()
-      this.chart.source(this.data)
-      this.chart.scale({
-        // 设置y轴最小值，不设置即显示负值
-        y: {
-          min: 0
-        },
-        x: {
-          range: [0, 1]
+      this.chart.source(this.dvMaker, {
+        percent: {
+          formatter: val => (val * 100).toFixed(2) + '%'
         }
       })
+      // 设置坐标系
+      this.chart.coord('theta', {
+        radius: 0.7
+      })
+      // tooltip 设置
       this.chart.tooltip({
-        crosshairs: {
-          type: 'line'
-        }
+        showTitle: false,
+        itemTpl: '<li><span style="background-color:{color}" class="g2-tooltip-marker"></span>{name}: {value}</li>'
       })
-      this.chart.line().position('x*y')
-      this.chart.point().position('x*y').size(4).shape('circle').style({
-        stroke: '#fff',
-        lineWidth: 1
-      })
+      // 创建图形
+      this.chart.intervalStack()
+        .position('percent')
+        .color('item')
+        .label('percent', {
+          formatter: (val, item) => item.point.item + ': ' + val
+        })
+        .tooltip('item*percent', (item, percent) => ({
+          name: item,
+          value: (percent * 100).toFixed(2) + '%'
+        }))
+        .style({
+          lineWidth: 1,
+          stroke: '#fff'
+        })
       // 渲染图表
       this.chart.render()
     },
     // 数据源改变 重新渲染新的数据
     changeData () {
-      this.chart.changeData(this.data)
+      this.chart.changeData(this.dvMaker())
     }
   }
 }

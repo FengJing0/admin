@@ -20,7 +20,7 @@
       </el-aside>
       <el-main>
         <transition name="fade-transverse">
-          <router-view style="position:absolute"></router-view>
+          <router-view></router-view>
         </transition>
       </el-main>
     </el-container>

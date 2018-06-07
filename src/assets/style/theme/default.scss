@@ -123,8 +123,9 @@ $color: $color-primary;
         }
       }
       .el-main {
-        padding: 0px;
+        padding: 0;
         position: relative;
+        overflow: hidden;
       }
     }
   }

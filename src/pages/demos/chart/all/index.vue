@@ -69,6 +69,32 @@
       <el-col :span="8" class="col">
         <el-card class="header-in">
           <ChartCardHeader
+            :title="chart[5].refName"
+            slot="header"
+            @refresh="handleRefreshData(5)"></ChartCardHeader>
+          <G2NightingaleRoseBase
+            v-bind="chart[5]"
+            @ready="isReady(5)"
+            :ref="chart[5].refName"
+            :autoInit="true"></G2NightingaleRoseBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
+            :title="chart[6].refName"
+            slot="header"
+            @refresh="handleRefreshData(6)"></ChartCardHeader>
+          <G2RadarBase
+            v-bind="chart[6]"
+            @ready="isReady(6)"
+            :ref="chart[6].refName"
+            :autoInit="true"></G2RadarBase>
+        </el-card>
+      </el-col>
+      <el-col :span="8" class="col">
+        <el-card class="header-in">
+          <ChartCardHeader
             :title="chart[7].refName"
             slot="header"
             @refresh="handleRefreshData(7)"></ChartCardHeader>
@@ -121,7 +147,7 @@ export default {
         {
           api: {url: '/api/chart/G2NightingaleRose', data: {type: 'base'}},
           refName: 'G2NightingaleRoseBase',
-          ready: true,
+          ready: false,
           data: []
         },
         {
@@ -167,27 +193,11 @@ export default {
     },
     // 请求图表数据
     syncData () {
-      // this.$axios.all(this.chart.map(e => this.$axios.post(e.api.url, e.api.data))).then(this.$axios.spread((...res) => {
-      //   console.log(res)
-      // }))
-      this.$axios.post(this.chart[0].api.url, this.chart[0].api.data).then(res => {
-        this.chart[0].data = res
-      })
-      this.$axios.post(this.chart[1].api.url, this.chart[1].api.data).then(res => {
-        this.chart[1].data = res
-      })
-      this.$axios.post(this.chart[2].api.url, this.chart[2].api.data).then(res => {
-        this.chart[2].data = res
-      })
-      this.$axios.post(this.chart[3].api.url, this.chart[3].api.data).then(res => {
-        this.chart[3].data = res
-      })
-      this.$axios.post(this.chart[4].api.url, this.chart[4].api.data).then(res => {
-        this.chart[4].data = res
-      })
-      this.$axios.post(this.chart[7].api.url, this.chart[7].api.data).then(res => {
-        this.chart[7].data = res
-      })
+      this.$axios.all(this.chart.map(e => this.$axios.post(e.api.url, e.api.data))).then(this.$axios.spread((...res) => {
+        res.forEach((e, index) => {
+          this.chart[index].data = e
+        })
+      }))
     },
     handleRefreshData (index) {
       const api = this.chart[index].api
