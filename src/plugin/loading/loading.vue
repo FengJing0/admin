@@ -45,11 +45,12 @@ export default {
     transform: scale(1); } }
 
 .ball-spin-fade-loader {
+  background-color: #f00;
   position: absolute;
   left: 50%;
   top:50%;
-  width:100%;
-  height:100%;
+  width:80px;
+  height:80px;
   transform: translate(-50%, -50%);
 }
 .ball-spin-fade-loader > div:nth-child(1) {
@@ -100,5 +101,7 @@ export default {
   margin: 2px;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  position: absolute; }
+  position: absolute;
+
+}
 </style>
