@@ -51,7 +51,79 @@ export const menu = {
           meta: {
             requiresAuth: true
           },
-          component: () => import('@/pages/demos/plugins/mock/ajax.vue')
+          component: () => import('@/pages/demos/plugins/mock/ajax')
+        }
+      ]
+    },
+    {
+      title: '布局',
+      icon: 'object-ungroup',
+      children: [
+        {
+          title: '可拖动网格布局',
+          icon: 'file-o',
+          path: 'layout/grid',
+          name: 'demo-plugins-layout-grid',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/layout/grid')
+        },
+        {
+          title: '可调布局',
+          icon: 'file-o',
+          path: 'layout/splitpane',
+          name: 'demo-plugins-layout-splitpane',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/layout/splitpane')
+        }
+      ]
+    },
+    {
+      title: '导入和导出',
+      icon: 'download',
+      children: [
+        {
+          title: '导入csv文件',
+          icon: 'download',
+          path: 'import/csv',
+          name: 'demo-plugins-import-csv',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/import/csv')
+        },
+        {
+          title: '导入xlsx文件',
+          icon: 'download',
+          path: 'import/xlsx',
+          name: 'demo-plugins-import-xlsx',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/import/xlsx')
+        },
+        {
+          title: '导出表格',
+          icon: 'cloud-download',
+          path: 'export/table',
+          name: 'demo-plugins-export-table',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/export/table')
+        },
+        {
+          title: '导出文本',
+          icon: 'cloud-download',
+          path: 'export/txt',
+          name: 'demo-plugins-export-txt',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/export/txt')
         }
       ]
     }

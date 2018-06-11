@@ -47,7 +47,7 @@ export default {
       return `width:${this.collapse ? 65 : 200}px;`
     },
     isIndex () {
-      return this.$route.name === 'index'
+      return this.$route.name.indexOf('index') === 0
     }
   },
   components: {

@@ -45,52 +45,52 @@ export default {
     transform: scale(1); } }
 
 .ball-spin-fade-loader {
-  background-color: #f00;
+  /*background-color: #f00;*/
   position: absolute;
   left: 50%;
   top:50%;
-  width:80px;
-  height:80px;
+  width:65px;
+  height:65px;
   transform: translate(-50%, -50%);
 }
 .ball-spin-fade-loader > div:nth-child(1) {
-  top: 25px;
-  left: 0;
+  top: 48px;
+  left: 23px;
   -webkit-animation: ball-spin-fade-loader 1s 0s infinite linear;
   animation: ball-spin-fade-loader 1s 0s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(2) {
-  top: 17.04545px;
-  left: 17.04545px;
+  top: 40.04545px;
+  left: 40.04545px;
   -webkit-animation: ball-spin-fade-loader 1s 0.12s infinite linear;
   animation: ball-spin-fade-loader 1s 0.12s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(3) {
-  top: 0;
-  left: 25px;
+  top: 23px;
+  left: 48px;
   -webkit-animation: ball-spin-fade-loader 1s 0.24s infinite linear;
   animation: ball-spin-fade-loader 1s 0.24s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(4) {
-  top: -17.04545px;
-  left: 17.04545px;
+  top: 6.04545px;
+  left: 40.04545px;
   -webkit-animation: ball-spin-fade-loader 1s 0.36s infinite linear;
   animation: ball-spin-fade-loader 1s 0.36s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(5) {
-  top: -25px;
-  left: 0;
+  top: -2px;
+  left: 23px;
   -webkit-animation: ball-spin-fade-loader 1s 0.48s infinite linear;
   animation: ball-spin-fade-loader 1s 0.48s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(6) {
-  top: -17.04545px;
-  left: -17.04545px;
+  top: 6.04545px;
+  left: 6.04545px;
   -webkit-animation: ball-spin-fade-loader 1s 0.6s infinite linear;
   animation: ball-spin-fade-loader 1s 0.6s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(7) {
-  top: 0;
-  left: -25px;
+  top: 23px;
+  left: -2px;
   -webkit-animation: ball-spin-fade-loader 1s 0.72s infinite linear;
   animation: ball-spin-fade-loader 1s 0.72s infinite linear; }
 .ball-spin-fade-loader > div:nth-child(8) {
-  top: 17.04545px;
-  left: -17.04545px;
+  top: 40.04545px;
+  left: 6.04545px;
   -webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
   animation: ball-spin-fade-loader 1s 0.84s infinite linear; }
 .ball-spin-fade-loader > div {
@@ -102,6 +102,5 @@ export default {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   position: absolute;
-
 }
 </style>

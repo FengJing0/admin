@@ -32,8 +32,8 @@ import '@/mock/register'
 // 全局注册的组件
 import '@/components'
 
-// 异步请求库
-import '@/plugin/axios'
+// 插件
+import '@/plugin/register'
 
 Vue.use(ElementUI)
 

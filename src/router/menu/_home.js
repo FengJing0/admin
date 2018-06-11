@@ -13,6 +13,11 @@ export default {
       name: 'index',
       meta: {requiresAuth: true},
       component: () => import('@/pages/core/index/index.vue')
+    },
+    {
+      path: '404',
+      name: 'index-notFount',
+      component: () => import('@/pages/core/NotFount/index')
     }
   ]
 }

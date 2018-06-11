@@ -69,13 +69,10 @@ export default {
       renderer.blockquote = (quote) => {
         return `<blockquote>${quote}</blockquote>`
       }
-      marked.setOptions({
+      return marked(data, {
         renderer,
-        highlight: (code) => {
-          highlight.highlightAuto(code).value
-        }
+        ...this.highlight ? {highlight: (code) => highlight.highlightAuto(code).value} : {}
       })
-      return marked(data)
     }
   }
 }

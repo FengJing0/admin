@@ -1,7 +1,7 @@
 export default [
   {
     path: '/demo',
-    component: () => import('@/components/core/MainLayout/index.vue'),
+    // component: () => import('@/components/core/MainLayout/index'),
     meta: {requiresAuth: true},
     redirect: {
       name: 'index'
@@ -10,6 +10,12 @@ export default [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/pages/core/login/index.vue')
+    component: () => import('@/pages/core/login/index')
+  },
+  {
+    path: '*',
+    redirect: {
+      name: 'index-notFount'
+    }
   }
 ]

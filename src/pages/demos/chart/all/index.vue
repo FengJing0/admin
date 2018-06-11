@@ -6,16 +6,19 @@
           <ChartCardHeader
             :title="chart[0].refName"
             slot="header"
-            @refresh="handleRefreshData(0)"></ChartCardHeader>
-          <G2LineBase
-            v-bind="chart[0]"
-            @ready="isReady(0)"
-            :ref="chart[0].refName"
-            :autoInit="true"></G2LineBase>
+            @refresh="handleRefreshData(0)">
+          </ChartCardHeader>
+            <Loading :loading="!ready"></Loading>
+            <G2LineBase
+              v-bind="chart[0]"
+              @ready="isReady(0)"
+              :ref="chart[0].refName"
+              :autoInit="true"></G2LineBase>
         </el-card>
       </el-col>
       <el-col :span="8" class="col">
         <el-card class="header-in">
+          <Loading :loading="!ready"></Loading>
           <ChartCardHeader
             :title="chart[1].refName"
             slot="header"
@@ -29,6 +32,7 @@
       </el-col>
       <el-col :span="8" class="col">
         <el-card class="header-in">
+          <Loading :loading="!ready"></Loading>
           <ChartCardHeader
             :title="chart[2].refName"
             slot="header"
@@ -46,6 +50,7 @@
             :title="chart[3].refName"
             slot="header"
             @refresh="handleRefreshData(3)"></ChartCardHeader>
+          <Loading :loading="!ready"></Loading>
           <G2BarBase
             v-bind="chart[3]"
             @ready="isReady(3)"
@@ -59,6 +64,7 @@
             :title="chart[4].refName"
             slot="header"
             @refresh="handleRefreshData(4)"></ChartCardHeader>
+          <Loading :loading="!ready"></Loading>
           <G2PieBase
             v-bind="chart[4]"
             @ready="isReady(4)"
@@ -72,6 +78,7 @@
             :title="chart[5].refName"
             slot="header"
             @refresh="handleRefreshData(5)"></ChartCardHeader>
+          <Loading :loading="!ready"></Loading>
           <G2NightingaleRoseBase
             v-bind="chart[5]"
             @ready="isReady(5)"
@@ -85,6 +92,7 @@
             :title="chart[6].refName"
             slot="header"
             @refresh="handleRefreshData(6)"></ChartCardHeader>
+          <Loading :loading="!ready"></Loading>
           <G2RadarBase
             v-bind="chart[6]"
             @ready="isReady(6)"
@@ -98,6 +106,7 @@
             :title="chart[7].refName"
             slot="header"
             @refresh="handleRefreshData(7)"></ChartCardHeader>
+          <Loading :loading="!ready"></Loading>
           <G2AreaBase
             v-bind="chart[7]"
             @ready="isReady(7)"
