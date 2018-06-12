@@ -29,11 +29,6 @@ export default {
       type: Object,
       required: false,
       default: () => ({})
-    },
-    url: {
-      type: String,
-      required: false,
-      default: ''
     }
   },
   data () {
@@ -44,8 +39,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.api)
-    // this.syncData()
+    this.syncData()
   },
   watch: {
     style () {
@@ -63,6 +57,7 @@ export default {
     syncData () {
       this.$axios.post(this.api.url, this.api.data).then(res => {
         this.data = res
+        console.log(res)
       })
     },
     resize () {

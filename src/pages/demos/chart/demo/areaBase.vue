@@ -1,7 +1,12 @@
 <template>
   <Container type="ghost">
-    <ChartDemoCard v-bind="card">
-      <G2AreaBase solt-scope="{data}"></G2AreaBase>
+    <ChartDemoCard v-bind="card" @resize="$refs.chart.resize()">
+      <G2AreaBase
+        slot-scope="{data}"
+        ref="chart"
+        :data="data"
+        v-bind="chart"
+        @ready="ready"></G2AreaBase>
     </ChartDemoCard>
     <el-card class="dd-mt">
       <Markdown url="/static/md/组件 - 图表.md"></Markdown>
@@ -18,18 +23,10 @@ export default {
   data () {
     return {
       card: {
-        api: {
-          url: '/api/chart/G2Area',
-          data: {
-            type: 'base'
-          }
-        }
-      }
+        api: {url: '/api/chart/G2Area', data: {type: 'base'}}
+      },
+      chart: {}
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
