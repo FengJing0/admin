@@ -1,0 +1,95 @@
+<template>
+  <Container class="container" :responsive="true">
+    <template slot="header">基本示例</template>
+    <el-row :gutter="10">
+      <el-col :xl="12" :lg="12">
+        <el-row :gutter="10">
+          <el-col :xl="12" :lg="12" >
+            <el-input v-model="text" class="dd-md-responsive"></el-input>
+          </el-col>
+          <el-col :xl="12" :lg="12">
+            <el-button @click="copyText" style="width:100%; padding-left:0;padding-right:0;">将左侧输入框内的文字复制进剪贴板</el-button>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col class="dd-mt">
+            <el-button @click="copyHtml" class="dd-md-responsive">将 <span v-html="html"></span> 连带样式一起复制进剪贴板，然后去 Word 文档内粘贴</el-button>
+          </el-col>
+        </el-row>
+      </el-col>
+      <el-col :xl="12" :lg="12">
+        <el-alert
+          class="dd-mb"
+          title="只有在 IE 浏览器下你才可以通过下面这两个按钮获取剪贴板数据"
+          type="warning"
+          show-icon>
+        </el-alert>
+        <div class="dd-mb">
+          <el-tooltip content="需要 IE 浏览器" placement="top">
+            <el-button @click="readText">readText( )</el-button>
+          </el-tooltip>
+          <el-tooltip content="需要 IE 浏览器" placement="top">
+            <el-button @click="read">read( )</el-button>
+          </el-tooltip>
+        </div>
+        <el-input type="textarea" placeholder="在这里检验你的剪贴板 ( text/plain 数据 )"></el-input>
+      </el-col>
+    </el-row>
+  </Container>
+</template>
+
+<script>
+import clipboard from 'clipboard-polyfill'
+export default {
+  data () {
+    return {
+      text: 'Hello ~',
+      html: '<span style="background-color: #19be6b; color: #f8f8f9;">Hello</span><span style="background-color: #495060; color: #f8f8f9;">World</span>'
+    }
+  },
+  methods: {
+    copyText () {
+      clipboard.writeText(this.text)
+    },
+    copyHtml () {
+      var dt = new clipboard.DT()
+      dt.setData('text/html', this.html)
+      clipboard.write(dt)
+    },
+    readText () {
+      clipboard.readText().then((res) => {
+        console.log(res)
+        this.$message({
+          message: '读取成功 返回结果请查看控制台',
+          type: 'success'
+        })
+      }, (err) => {
+        console.log(err)
+        this.$message({
+          message: '错误信息已经打印到控制台',
+          type: 'error'
+        })
+      })
+    },
+    read () {
+      clipboard.read().then((res) => {
+        console.log(res)
+        this.$message({
+          message: '读取成功 返回结果请查看控制台',
+          type: 'success'
+        })
+      }, (err) => {
+        console.log(err)
+        this.$message({
+          message: '错误信息已经打印到控制台',
+          type: 'error'
+        })
+      })
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+@import "@/assets/style/public.scss";
+</style>

@@ -82,6 +82,32 @@ export const menu = {
       ]
     },
     {
+      title: '多国语',
+      icon: 'book',
+      children: [
+        {
+          title: '演示页面 1',
+          icon: 'file-o',
+          path: 'vue-i18n/demo-1',
+          name: 'demo-plugins-vue-i18n-demo-1',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/vue-i18n/demo-1')
+        },
+        {
+          title: '使用方法',
+          icon: 'file-o',
+          path: 'vue-i18n/doc',
+          name: 'demo-plugins-vue-i18n-doc',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/vue-i18n/doc')
+        }
+      ]
+    },
+    {
       title: '导入和导出',
       icon: 'download',
       children: [
@@ -124,6 +150,70 @@ export const menu = {
             requiresAuth: true
           },
           component: () => import('@/pages/demos/plugins/export/txt')
+        }
+      ]
+    },
+    {
+      title: '剪贴板',
+      icon: 'clipboard',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'clipboard-polyfill/demo',
+          name: 'demo-plugins-clipboard-polyfill-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/clipboard-polyfill/demo')
+        }
+      ]
+    },
+    {
+      title: 'Cookie',
+      icon: 'hdd-o',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'js-cookie/demo',
+          name: 'demo-plugins-js-cookie-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/js-cookie/demo')
+        }
+      ]
+    },
+    {
+      title: '时间计算',
+      icon: 'clock-o',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'timeago/demo',
+          name: 'demo-plugins-timeago-demo',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/timeago/demo')
+        }
+      ]
+    },
+    {
+      title: '多环境发布',
+      icon: 'paper-plane',
+      children: [
+        {
+          title: '基本示例',
+          icon: 'file-o',
+          path: 'build',
+          name: 'demo-plugins-build',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/plugins/build')
         }
       ]
     }

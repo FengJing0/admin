@@ -1,13 +1,48 @@
 <template>
-  <Container>
-    txt
+  <Container type="ghost">
+    <el-card class="dd-mb">
+      <template slot="header">导出文本</template>
+      <el-input
+        type="textarea"
+        :autosize="{minRows: 2, maxRows: 4}"
+        placeholder="请输入内容 然后点击保存按钮导出文本文档"
+        v-model="text"
+        class="dd-mb">
+      </el-input>
+      <el-button type="primary" @click="exportTxt">
+        <Icon name="download"></Icon>
+        保存为 txt
+      </el-button>
+    </el-card>
+    <el-card>
+      <Markdown url="/static/md/插件 - 导出.md"></Markdown>
+    </el-card>
   </Container>
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      text: ''
+    }
+  },
+  methods: {
+    exportTxt () {
+      // 校验是不是空
+      if (this.text === '') {
+        this.$message('虽然可以为空 但是出于体验不建议这样 还是写点东西吧')
+        return
+      }
+      // 导出
+      this.$export.txt({
+        text: this.text,
+        title: '文本'
+      })
+        .then(() => {
+          this.$message('导出文本成功')
+        })
+    }
   }
 }
 </script>
