@@ -61,7 +61,7 @@ export const menu = {
         maker('折线图', 'lineBase'),
         maker('阶梯折线图', 'lineStep'),
         maker('南丁格尔玫瑰图', 'nightingaleRoseBase'),
-        maker('饼图', 'pieBase'),
+        maker('饼图', 'PieBase'),
         maker('雷达图', 'radarBase')
       ]
     }

@@ -29,6 +29,11 @@ export default {
       type: Object,
       required: false,
       default: () => ({})
+    },
+    isReady: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {
@@ -57,7 +62,6 @@ export default {
     syncData () {
       this.$axios.post(this.api.url, this.api.data).then(res => {
         this.data = res
-        console.log(res)
       })
     },
     resize () {

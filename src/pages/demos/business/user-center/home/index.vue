@@ -1,7 +1,10 @@
 <template>
-  <h1>
-    user-center-homg
-  </h1>
+  <Container>
+    <template slot="header">用户中心</template>
+    <div>
+      doing
+    </div>
+  </Container>
 </template>
 
 <script>

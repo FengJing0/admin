@@ -16,7 +16,23 @@ export const menu = {
       meta: {
         requiresAuth: true
       },
-      component: () => import('@/pages/demos/business/index/index.vue')
+      component: () => import('@/pages/demos/business/index/')
+    },
+    {
+      title: '用户中心',
+      icon: 'user',
+      children: [
+        {
+          title: '个人中心首页',
+          icon: 'file-o',
+          path: 'user-center/home',
+          name: 'demo-business-user-center-home',
+          meta: {
+            requiresAuth: true
+          },
+          component: () => import('@/pages/demos/business/user-center/home/')
+        }
+      ]
     }
   ]
 }
