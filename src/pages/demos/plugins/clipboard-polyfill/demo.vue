@@ -8,7 +8,7 @@
             <el-input v-model="text" class="dd-md-responsive"></el-input>
           </el-col>
           <el-col :xl="12" :lg="12">
-            <el-button @click="copyText" style="width:100%; padding-left:0;padding-right:0;">将左侧输入框内的文字复制进剪贴板</el-button>
+            <el-button @click="copyText">将左侧输入框内的文字复制进剪贴板</el-button>
           </el-col>
         </el-row>
         <el-row>

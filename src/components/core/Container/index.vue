@@ -59,6 +59,7 @@ export default {
 
 <style lang="scss">
 @import "@/assets/style/public.scss";
+@import "./response";
   .container-component{
     position: absolute;
     top:0;
@@ -67,49 +68,27 @@ export default {
     right:0;
     overflow: auto;
   }
+
+.container-component.responsive{
+  .dd-md-responsive{
+    @include MarginBottom($marginList)
+  }
+  .dd-mt-responsive{
+    @include MarginTop($marginList)
+  }
+}
+
 @media (min-width: 576px) {
   // 根据你的需要在这里添加样式 xs
-  .container-component.responsive {
-    .dd-md-responsive{
-      margin-bottom: $margin;
-    }
-    .dd-mt-responsive{
-      margin-bottom: $margin;
-    }
-  }
 }
 @media (min-width: 768px) {
   // 根据你的需要在这里添加样式 sm
-  .container-component.responsive {
-    .dd-md-responsive{
-      margin-bottom: $margin;
-    }
-    .dd-mt-responsive{
-      margin-bottom: $margin;
-    }
-  }
 }
 @media (min-width: 992px) {
   // 根据你的需要在这里添加样式 md
-  .container-component.responsive {
-    .dd-md-responsive{
-      margin-bottom: $margin;
-    }
-    .dd-mt-responsive{
-      margin-bottom: $margin;
-    }
-  }
 }
 @media (min-width: 1200px) {
-  // 根据你的需要在这里添加样式 md
-  .container-component.responsive {
-    .dd-md-responsive{
-      margin-bottom: 0;
-    }
-    .dd-mt-responsive{
-      margin-bottom: 0;
-    }
-  }
+  // 根据你的需要在这里添加样式 lg
 }
 // 在大于1920分辨率的时候 xl
 @media (min-width: 1921px) {
@@ -117,12 +96,6 @@ export default {
     margin: 0px auto;
     margin-bottom: 20px;
     max-width: 1920px - 200px;
-    .dd-md-responsive{
-      margin-bottom: 0;
-    }
-    .dd-mt-responsive{
-      margin-bottom: 0;
-    }
   }
 }
 </style>
