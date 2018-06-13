@@ -59,7 +59,6 @@ export default {
 
 <style lang="scss">
 @import "@/assets/style/public.scss";
-@import "./response";
   .container-component{
     position: absolute;
     top:0;

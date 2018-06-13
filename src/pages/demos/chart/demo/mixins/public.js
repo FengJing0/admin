@@ -5,7 +5,6 @@ export default {
   methods: {
     ready () {
       this.$nextTick(() => {
-        this.isReady = true
         this.$refs.chart.resize()
       })
     }
