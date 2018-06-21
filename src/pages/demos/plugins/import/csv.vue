@@ -4,23 +4,26 @@
       <template slot="header">
         导入 csv
       </template>
-      <el-button @click="download" class="dd-mb">
+      <el-button @click="download"
+                 class="dd-mb">
         <Icon name="download"></Icon>
         下载演示 .csv 表格
       </el-button>
-      <el-upload :before-upload="handleUpload" action="default" class="dd-mb">
+      <el-upload :before-upload="handleUpload"
+                 action="default"
+                 class="dd-mb">
         <el-button type="success">
           <Icon name="file-o"></Icon>
           选择要导入的 .csv 表格
         </el-button>
       </el-upload>
       <!--<el-table v-bind="table">-->
-        <!--<el-table-column-->
-          <!--v-for="(item, index) in table.columns"-->
-          <!--:key="index"-->
-          <!--:prop="item.prop"-->
-          <!--:label="item.label">-->
-        <!--</el-table-column>-->
+      <!--<el-table-column-->
+      <!--v-for="(item, index) in table.columns"-->
+      <!--:key="index"-->
+      <!--:prop="item.prop"-->
+      <!--:label="item.label">-->
+      <!--</el-table-column>-->
       <!--</el-table>-->
       <Tables v-bind="table"></Tables>
     </el-card>
@@ -42,7 +45,8 @@ export default {
   },
   methods: {
     download () {
-      window.location.href = 'http://fairyever.qiniudn.com/d2-admin-import-csv-demo.csv'
+      window.location.href =
+        'http://fairyever.qiniudn.com/d2-admin-import-csv-demo.csv'
     },
     handleUpload (file) {
       this.$import.csv(file).then(res => {
@@ -57,7 +61,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
