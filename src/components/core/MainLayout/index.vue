@@ -1,21 +1,28 @@
 <template>
-  <el-container class="layout-main" :class="theme">
+  <el-container class="layout-main"
+                :class="theme">
     <el-header>
-      <div class="logo-group" :style="logoGroupStyle">
-        <img v-if="collapse" src="@/assets/image/logo/header-icon-only.png">
-        <img v-else src="@/assets/image/logo/header.png">
+      <div class="logo-group"
+           :style="logoGroupStyle">
+        <img v-if="collapse"
+             src="@/assets/image/logo/header-icon-only.png">
+        <img v-else
+             src="@/assets/image/logo/header.png">
       </div>
-      <el-tooltip placement="left" v-if="!isIndex">
-        <div slot="content">{{content}}</div>
-        <div class="toggle-sidemenu-btn" @click="toggleAside">
-          <Icon name="bars"></Icon>
-        </div>
-      </el-tooltip>
       <HeaderMenu></HeaderMenu>
       <HeaderRight></HeaderRight>
     </el-header>
     <el-container>
-      <el-aside :style="logoGroupStyle" v-if="!isIndex">
+      <el-aside :style="logoGroupStyle"
+                v-if="!isIndex">
+        <el-tooltip placement="left">
+          <div slot="content">{{content}}</div>
+          <div class="toggle-sidemenu-btn"
+               @click="toggleAside">
+            <Icon name="bars"
+                  :style="rotate"></Icon>
+          </div>
+        </el-tooltip>
         <SideMenu :collapse="collapse"></SideMenu>
       </el-aside>
       <el-main>
@@ -45,6 +52,9 @@ export default {
   computed: {
     logoGroupStyle () {
       return `width:${this.collapse ? 65 : 200}px;`
+    },
+    rotate () {
+      return `transform:rotate(${this.collapse ? 90 : 0}deg);`
     },
     isIndex () {
       return this.$route.name.indexOf('index') === 0
