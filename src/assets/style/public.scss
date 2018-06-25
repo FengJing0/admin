@@ -1,5 +1,6 @@
 @import './unit/_color.scss';
 @import './unit/_size.scss';
+@import './unit/_list.scss';
 
 // 工具类名统一前缀
 $prefix: dd;
@@ -21,22 +22,6 @@ $prefix: dd;
 
 
 // 响应式样式
-$breakpoint: (
-  'xs': 576px,
-  'sm': 768px,
-  'md': 992px,
-  'lg': 1200px,
-  'xl': 1920px,
-);
-
-$marginList:(
-  'sm': $margin,
-  'xs': $margin,
-  'md': $margin,
-  'lg': 0,
-  'xl': 0,
-);
-
 @mixin MarginTop($list, $points:$breakpoint) {
   @each $point, $size in $list {
     @if map-has_key($points, $point){

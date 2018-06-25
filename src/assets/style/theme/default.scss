@@ -72,8 +72,7 @@ $color: $color-primary;
           height: 56px;
           line-height: 56px;
           text-align: center;
-          user-select: none;
-          cursor: pointer;
+          @extend %unable-select;
           i {
             font-size: 20px;
             color: $color-text-normal;
