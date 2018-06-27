@@ -1,117 +1,107 @@
 <template>
-  <Container type="ghost" class="demo-chart-index">
+  <Container type="ghost"
+             class="demo-chart-index">
     <el-row :gutter="20">
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[0].refName"
-            slot="header"
-            @refresh="handleRefreshData(0)">
+          <ChartCardHeader :title="chart[0].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(0)">
           </ChartCardHeader>
-            <Loading :loading="!ready"></Loading>
-            <G2LineBase
-              v-bind="chart[0]"
-              @ready="isReady(0)"
-              :ref="chart[0].refName"
-              :autoInit="true"></G2LineBase>
+          <G2LineBase v-bind="chart[0]"
+                      @ready="isReady(0)"
+                      :ref="chart[0].refName"
+                      :autoInit="true"></G2LineBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <Loading :loading="!ready"></Loading>
-          <ChartCardHeader
-            :title="chart[1].refName"
-            slot="header"
-            @refresh="handleRefreshData(1)"></ChartCardHeader>
-          <G2LineStep
-            v-bind="chart[1]"
-            @ready="isReady(1)"
-            :ref="chart[1].refName"
-            :autoInit="true"></G2LineStep>
+          <ChartCardHeader :title="chart[1].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(1)"></ChartCardHeader>
+          <G2LineStep v-bind="chart[1]"
+                      @ready="isReady(1)"
+                      :ref="chart[1].refName"
+                      :autoInit="true"></G2LineStep>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <Loading :loading="!ready"></Loading>
-          <ChartCardHeader
-            :title="chart[2].refName"
-            slot="header"
-            @refresh="handleRefreshData(2)"></ChartCardHeader>
-          <G2ColumnBase
-            v-bind="chart[2]"
-            @ready="isReady(2)"
-            :ref="chart[2].refName"
-            :autoInit="true"></G2ColumnBase>
+          <ChartCardHeader :title="chart[2].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(2)"></ChartCardHeader>
+          <G2ColumnBase v-bind="chart[2]"
+                        @ready="isReady(2)"
+                        :ref="chart[2].refName"
+                        :autoInit="true"></G2ColumnBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[3].refName"
-            slot="header"
-            @refresh="handleRefreshData(3)"></ChartCardHeader>
-          <Loading :loading="!ready"></Loading>
-          <G2BarBase
-            v-bind="chart[3]"
-            @ready="isReady(3)"
-            :ref="chart[3].refName"
-            :autoInit="true"></G2BarBase>
+          <ChartCardHeader :title="chart[3].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(3)"></ChartCardHeader>
+
+          <G2BarBase v-bind="chart[3]"
+                     @ready="isReady(3)"
+                     :ref="chart[3].refName"
+                     :autoInit="true"></G2BarBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[4].refName"
-            slot="header"
-            @refresh="handleRefreshData(4)"></ChartCardHeader>
-          <Loading :loading="!ready"></Loading>
-          <G2PieBase
-            v-bind="chart[4]"
-            @ready="isReady(4)"
-            :ref="chart[4].refName"
-            :autoInit="true"></G2PieBase>
+          <ChartCardHeader :title="chart[4].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(4)"></ChartCardHeader>
+
+          <G2PieBase v-bind="chart[4]"
+                     @ready="isReady(4)"
+                     :ref="chart[4].refName"
+                     :autoInit="true"></G2PieBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[5].refName"
-            slot="header"
-            @refresh="handleRefreshData(5)"></ChartCardHeader>
-          <Loading :loading="!ready"></Loading>
-          <G2NightingaleRoseBase
-            v-bind="chart[5]"
-            @ready="isReady(5)"
-            :ref="chart[5].refName"
-            :autoInit="true"></G2NightingaleRoseBase>
+          <ChartCardHeader :title="chart[5].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(5)"></ChartCardHeader>
+
+          <G2NightingaleRoseBase v-bind="chart[5]"
+                                 @ready="isReady(5)"
+                                 :ref="chart[5].refName"
+                                 :autoInit="true"></G2NightingaleRoseBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[6].refName"
-            slot="header"
-            @refresh="handleRefreshData(6)"></ChartCardHeader>
-          <Loading :loading="!ready"></Loading>
-          <G2RadarBase
-            v-bind="chart[6]"
-            @ready="isReady(6)"
-            :ref="chart[6].refName"
-            :autoInit="true"></G2RadarBase>
+          <ChartCardHeader :title="chart[6].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(6)"></ChartCardHeader>
+
+          <G2RadarBase v-bind="chart[6]"
+                       @ready="isReady(6)"
+                       :ref="chart[6].refName"
+                       :autoInit="true"></G2RadarBase>
         </el-card>
       </el-col>
-      <el-col :span="8" class="col">
+      <el-col :span="8"
+              class="col">
         <el-card class="header-in">
-          <ChartCardHeader
-            :title="chart[7].refName"
-            slot="header"
-            @refresh="handleRefreshData(7)"></ChartCardHeader>
-          <Loading :loading="!ready"></Loading>
-          <G2AreaBase
-            v-bind="chart[7]"
-            @ready="isReady(7)"
-            :ref="chart[7].refName"
-            :autoInit="true"></G2AreaBase>
+          <ChartCardHeader :title="chart[7].refName"
+                           slot="header"
+                           @refresh="handleRefreshData(7)"></ChartCardHeader>
+
+          <G2AreaBase v-bind="chart[7]"
+                      @ready="isReady(7)"
+                      :ref="chart[7].refName"
+                      :autoInit="true"></G2AreaBase>
         </el-card>
       </el-col>
     </el-row>
@@ -222,5 +212,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './style.scss';
+@import './style.scss';
 </style>

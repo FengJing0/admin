@@ -1,20 +1,33 @@
 <template>
-  <div class="container-component" :class="{responsive}">
+  <div class="container-component"
+       :class="{responsive}"
+       v-loading='ready'>
     <!--卡片容器-->
     <el-card v-if="type === 'card'">
-      <slot v-if="$slots.header" slot="header" name="header"></slot>
+      <slot v-if="$slots.header"
+            slot="header"
+            name="header"></slot>
       <slot></slot>
     </el-card>
     <!--隐形-->
-    <div v-if="type === 'ghost'" class="dd-mr dd-mb">
+    <div v-if="type === 'ghost'"
+         class="dd-mr dd-mb">
       <slot name="header"></slot>
       <slot></slot>
     </div>
     <!--撑满-->
-    <card-full v-if="type === 'card-full'" :top="top" :right="right" :bottom="bottom" :left="left">
-      <slot v-if="$slots.header" slot="header" name="header"></slot>
+    <card-full v-if="type === 'card-full'"
+               :top="top"
+               :right="right"
+               :bottom="bottom"
+               :left="left">
+      <slot v-if="$slots.header"
+            slot="header"
+            name="header"></slot>
       <slot></slot>
-      <slot v-if="$slots.footer" slot="footer" name="footer"></slot>
+      <slot v-if="$slots.footer"
+            slot="footer"
+            name="footer"></slot>
     </card-full>
   </div>
 </template>
@@ -52,28 +65,33 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    ready: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "@/assets/style/public.scss";
-  .container-component{
-    position: absolute;
-    top:0;
-    left:0;
-    bottom: 0;
-    right:0;
-    overflow: auto;
-  }
+@import '@/assets/style/public.scss';
+.container-component {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
 
-.container-component.responsive{
-  .dd-md-responsive{
-    @include MarginBottom($marginList)
+.container-component.responsive {
+  .dd-md-responsive {
+    @include MarginBottom($marginList);
   }
-  .dd-mt-responsive{
-    @include MarginTop($marginList)
+  .dd-mt-responsive {
+    @include MarginTop($marginList);
   }
 }
 
