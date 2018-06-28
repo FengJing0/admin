@@ -71,7 +71,8 @@ $color: $color-primary;
         .toggle-sidemenu-btn {
           height: 56px;
           line-height: 56px;
-          text-align: center;
+          text-align: left;
+          padding: 0 20px;
           @extend %unable-select;
           i {
             font-size: 20px;
