@@ -1,11 +1,11 @@
+const meta = { requiresAuth: true }
+
 export const menu = {
   title: '插件',
   path: '/demo/plugins',
   name: 'demo-plugins',
-  meta: {
-    requiresAuth: true
-  },
-  component: () => import('@/components/core/MainLayout/index.vue'),
+  meta,
+  component: () => import('@/components/core/MainLayout/index'),
   redirect: {
     name: 'demo-plugins-index'
   },
@@ -13,10 +13,8 @@ export const menu = {
     {
       path: 'index',
       name: 'demo-plugins-index',
-      meta: {
-        requiresAuth: true
-      },
-      component: () => import('@/pages/demos/plugins/index/index.vue')
+      meta,
+      component: () => import('@/pages/demos/plugins/index')
     },
     {
       // mock
@@ -28,29 +26,23 @@ export const menu = {
           icon: 'file-o',
           path: 'mock/demoDTD',
           name: 'demo-plugins-mock-demoDTD',
-          meta: {
-            requiresAuth: true
-          },
-          component: () => import('@/pages/demos/plugins/mock/demoDTD.vue')
+          meta,
+          component: () => import('@/pages/demos/plugins/mock/demoDTD')
         },
         {
           title: '数据占位符',
           icon: 'file-o',
           path: 'mock/demoDPD',
           name: 'demo-plugins-mock-demoDPD',
-          meta: {
-            requiresAuth: true
-          },
-          component: () => import('@/pages/demos/plugins/mock/demoDPD.vue')
+          meta,
+          component: () => import('@/pages/demos/plugins/mock/demoDPD')
         },
         {
           title: '拦截Ajax请求',
           icon: 'file-o',
           path: 'mock/ajax',
           name: 'demo-plugins-mock-ajax',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/mock/ajax')
         }
       ]
@@ -64,9 +56,7 @@ export const menu = {
           icon: 'file-o',
           path: 'layout/grid',
           name: 'demo-plugins-layout-grid',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/layout/grid')
         },
         {
@@ -74,9 +64,7 @@ export const menu = {
           icon: 'file-o',
           path: 'layout/splitpane',
           name: 'demo-plugins-layout-splitpane',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/layout/splitpane')
         }
       ]
@@ -90,9 +78,7 @@ export const menu = {
           icon: 'file-o',
           path: 'vue-i18n/demo-1',
           name: 'demo-plugins-vue-i18n-demo-1',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/vue-i18n/demo-1')
         },
         {
@@ -100,9 +86,7 @@ export const menu = {
           icon: 'file-o',
           path: 'vue-i18n/doc',
           name: 'demo-plugins-vue-i18n-doc',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/vue-i18n/doc')
         }
       ]
@@ -116,9 +100,7 @@ export const menu = {
           icon: 'download',
           path: 'import/csv',
           name: 'demo-plugins-import-csv',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/import/csv')
         },
         {
@@ -126,9 +108,7 @@ export const menu = {
           icon: 'download',
           path: 'import/xlsx',
           name: 'demo-plugins-import-xlsx',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/import/xlsx')
         },
         {
@@ -136,9 +116,7 @@ export const menu = {
           icon: 'cloud-download',
           path: 'export/table',
           name: 'demo-plugins-export-table',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/export/table')
         },
         {
@@ -146,9 +124,7 @@ export const menu = {
           icon: 'cloud-download',
           path: 'export/txt',
           name: 'demo-plugins-export-txt',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/export/txt')
         }
       ]
@@ -162,9 +138,7 @@ export const menu = {
           icon: 'file-o',
           path: 'clipboard-polyfill/demo',
           name: 'demo-plugins-clipboard-polyfill-demo',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/clipboard-polyfill/demo')
         }
       ]
@@ -178,9 +152,7 @@ export const menu = {
           icon: 'file-o',
           path: 'js-cookie/demo',
           name: 'demo-plugins-js-cookie-demo',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/js-cookie/demo')
         }
       ]
@@ -194,9 +166,7 @@ export const menu = {
           icon: 'file-o',
           path: 'timeago/demo',
           name: 'demo-plugins-timeago-demo',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/timeago/demo')
         }
       ]
@@ -210,9 +180,7 @@ export const menu = {
           icon: 'file-o',
           path: 'build',
           name: 'demo-plugins-build',
-          meta: {
-            requiresAuth: true
-          },
+          meta,
           component: () => import('@/pages/demos/plugins/build')
         }
       ]
@@ -224,3 +192,4 @@ export const router = {
   ...menu,
   children: [].concat(...menu.children.map(e => e.children || e))
 }
+console.log(router)

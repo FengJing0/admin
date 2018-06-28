@@ -1,10 +1,10 @@
 <template>
-  <el-menu mode="horizontal" :default-active="index">
-    <el-menu-item
-      v-for="(item, index) in menu"
-      :key="index"
-      :index="item.name+'-index'"
-      @click.native="active(item)">{{item.title}}</el-menu-item>
+  <el-menu mode="horizontal"
+           :default-active="index">
+    <el-menu-item v-for="(item, index) in menu"
+                  :key="index"
+                  :index="item.name+'-index'"
+                  @click.native="active(item)">{{item.title}}</el-menu-item>
   </el-menu>
 </template>
 
@@ -59,17 +59,14 @@ export default {
     active (item) {
       let name = item.name
       if (name === '') {
-        this.$router.push({
-          path: '/'
-        })
+        this.$router.push({ path: '/' })
       } else {
-        this.$router.push({
-          name: name
-        })
+        this.$router.push({ name })
       }
     },
     // 更新侧边栏
     refreshSideMenu () {
+      console.log(this.routeName)
       this.setSideMenu({
         sideMenu: this.routeTopLevelMenu ? this.routeTopLevelMenu : []
       })
@@ -85,5 +82,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

@@ -14,15 +14,15 @@
     </el-header>
     <el-container>
       <el-aside :style="logoGroupStyle"
-                v-if="!isIndex">
-        <el-tooltip placement="left">
+                v-if="hasSideMenu">
+        <!-- <el-tooltip placement="left">
           <div slot="content">{{content}}</div>
           <div class="toggle-sidemenu-btn"
                @click="toggleAside">
             <Icon name="bars"
                   :style="rotate"></Icon>
           </div>
-        </el-tooltip>
+        </el-tooltip> -->
         <SideMenu :collapse="collapse"></SideMenu>
       </el-aside>
       <el-main>
@@ -35,12 +35,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       theme: 'default',
       collapse: false,
-      content: '展开菜单'
+      content: '展开菜单',
+      hasSideMenu: true
+    }
+  },
+  watch: {
+    sideMenu () {
+      this.hasSideMenu = !(this.sideMenu.length === 0)
     }
   },
   methods: {
@@ -56,9 +63,9 @@ export default {
     rotate () {
       return `transform:rotate(${this.collapse ? 90 : 0}deg);`
     },
-    isIndex () {
-      return this.$route.name.indexOf('index') === 0
-    }
+    ...mapState({
+      sideMenu: state => state.menu.sideMenu
+    })
   },
   components: {
     HeaderMenu: () => import('./components/HeaderMenu'),

@@ -1,31 +1,10 @@
 <template>
   <Container>
     <template slot="header">用户中心</template>
-    <button @click="handleClick">click</button>
-    <div :class="{red:status}">
-      doing
-    </div>
-    <div class="test">test</div>
+    <el-scrollbar>
+      <div style='height:200px;'>
+        <div style='height:2000px;background-color:#684;'></div>
+      </div>
+    </el-scrollbar>
   </Container>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      status: true
-    }
-  },
-  methods: {
-    handleClick () {
-      this.status = !this.status
-    }
-  }
-}
-</script>
-
-<style scoped>
-  .red {
-    color: red
-  }
-</style>
