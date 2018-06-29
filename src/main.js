@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import i18n from './i18n'
+import VCharts from 'v-charts'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -36,6 +37,7 @@ import '@/components'
 import '@/plugin/register'
 
 Vue.use(ElementUI)
+Vue.use(VCharts)
 
 Vue.config.productionTip = false
 

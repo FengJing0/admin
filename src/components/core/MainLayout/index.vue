@@ -9,20 +9,20 @@
         <img v-else
              src="@/assets/image/logo/header.png">
       </div>
+      <el-tooltip placement="bottom">
+        <div slot="content">{{content}}</div>
+        <div class="toggle-sidemenu-btn"
+             @click="toggleAside">
+          <Icon name="bars"
+                :style="rotate"></Icon>
+        </div>
+      </el-tooltip>
       <HeaderMenu></HeaderMenu>
       <HeaderRight></HeaderRight>
     </el-header>
     <el-container>
       <el-aside :style="logoGroupStyle"
                 v-if="hasSideMenu">
-        <!-- <el-tooltip placement="left">
-          <div slot="content">{{content}}</div>
-          <div class="toggle-sidemenu-btn"
-               @click="toggleAside">
-            <Icon name="bars"
-                  :style="rotate"></Icon>
-          </div>
-        </el-tooltip> -->
         <SideMenu :collapse="collapse"></SideMenu>
       </el-aside>
       <el-main>

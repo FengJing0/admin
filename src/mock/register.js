@@ -2,8 +2,6 @@ import Mock from 'mockjs'
 
 import './ajax-demo'
 
-import './chart/register'
-
 import './table'
 
 import './login'

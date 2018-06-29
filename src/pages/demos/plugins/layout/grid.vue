@@ -1,16 +1,19 @@
 <template>
-  <Container type="ghost"  class="demo-plugins-vue-grid-layout-demo">
-    <GridLayout v-bind="layout" @layout-updated="layoutUpdatedHandler">
-      <GridItem
-        v-for="(item, index) in layout.layout"
-        :key="index"
-        v-bind="item"
-        @resize="resizeHandler"
-        @move="moveHandler"
-        @resized="resizedHandler"
-        @moved="movedHandler">
+  <Container type="ghost"
+             class="demo-plugins-vue-grid-layout-demo">
+    <GridLayout v-bind="layout"
+                @layout-updated="layoutUpdatedHandler">
+      <GridItem v-for="(item, index) in layout.layout"
+                :key="index"
+                v-bind="item"
+                @resize="resizeHandler"
+                @move="moveHandler"
+                @resized="resizedHandler"
+                @moved="movedHandler">
         <el-card style="height:100%">
-          <el-tag size="mini" type="info" slot="header">Card {{item.i^0+1}}</el-tag>
+          <el-tag size="mini"
+                  type="info"
+                  slot="header">Card {{item.i^0+1}}</el-tag>
           <template v-if="index === 0">
             <div class="dd-mb">拖拽卡片调整位置</div>
             <div class="dd-mb">拖拽卡片右下角的手柄调整卡片大小</div>
@@ -84,10 +87,9 @@ export default {
 
 <style lang="scss">
 @import '@/assets/style/public.scss';
-.demo-plugins-vue-grid-layout-demo{
-  .vue-grid-layout{
-    margin:-10px;
-    .el-card{
+.demo-plugins-vue-grid-layout-demo {
+  .vue-grid-layout {
+    .el-card {
       @extend %unable-select;
     }
   }

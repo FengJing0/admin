@@ -1,12 +1,20 @@
 <template>
   <Container>
-    <div style="height: 400px; margin: -20px;">
-      <SplitPane :min-percent='10' :default-percent='30' split="vertical">
-        <template slot="paneL"><div class="dd-m-10">左</div></template>
+    <div style="height: 400px;">
+      <SplitPane :min-percent='10'
+                 :default-percent='30'
+                 split="vertical">
+        <template slot="paneL">
+          <div class="dd-m-10">左</div>
+        </template>
         <template slot="paneR">
           <SplitPane split="horizontal">
-            <template slot="paneL"><div class="dd-m-10">右上</div></template>
-            <template slot="paneR"><div class="dd-m-10">右下</div></template>
+            <template slot="paneL">
+              <div class="dd-m-10">右上</div>
+            </template>
+            <template slot="paneR">
+              <div class="dd-m-10">右下</div>
+            </template>
           </SplitPane>
         </template>
       </SplitPane>
@@ -31,5 +39,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

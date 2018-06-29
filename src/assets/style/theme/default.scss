@@ -27,7 +27,22 @@ $color: $color-primary;
           height: 60px;
         }
       }
-      
+      .toggle-sidemenu-btn {
+        float: left;
+          height: 60px;
+          line-height: 60px;
+          text-align: left;
+          padding: 0 20px;
+          @extend %unable-select;
+          i {
+            font-size: 20px;
+            color: $color-text-normal;
+            margin-top: 4px;
+          }
+          &:hover i{
+              color: $color;
+            }
+        }
       // 顶栏菜单
       .el-menu {
         float: left;
@@ -68,21 +83,7 @@ $color: $color-primary;
       .el-aside {
         transition: width .3s;
         overflow: inherit;
-        .toggle-sidemenu-btn {
-          height: 56px;
-          line-height: 56px;
-          text-align: left;
-          padding: 0 20px;
-          @extend %unable-select;
-          i {
-            font-size: 20px;
-            color: $color-text-normal;
-            margin-top: 4px;
-          }
-          &:hover i{
-              color: $color;
-            }
-        }
+        
         .dd-side-menu-empty {
           background-color: rgba(#000, .03);
           margin: $margin;

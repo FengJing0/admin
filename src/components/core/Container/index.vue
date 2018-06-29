@@ -3,17 +3,22 @@
        :class="{responsive}"
        v-loading='ready'>
     <!--卡片容器-->
-    <el-card v-if="type === 'card'">
+    <el-card v-if="type === 'card'"
+             style='max-height:calc(100% - 20px);width:calc(100% - 20px)'>
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <slot></slot>
+      <el-scrollbar style='height:100%'>
+        <slot></slot>
+      </el-scrollbar>
     </el-card>
     <!--隐形-->
     <div v-if="type === 'ghost'"
-         class="dd-mr dd-mb">
-      <slot name="header"></slot>
-      <slot></slot>
+         class="dd-mr"
+         style='height:calc(100% - 20px)'>
+      <el-scrollbar style='height:100%'>
+        <slot></slot>
+      </el-scrollbar>
     </div>
     <!--撑满-->
     <card-full v-if="type === 'card-full'"
@@ -24,7 +29,9 @@
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <slot></slot>
+      <el-scrollbar style='height:100%'>
+        <slot></slot>
+      </el-scrollbar>
       <slot v-if="$slots.footer"
             slot="footer"
             name="footer"></slot>
@@ -84,6 +91,9 @@ export default {
   bottom: 0;
   right: 0;
   overflow: auto;
+  .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
 }
 
 .container-component.responsive {

@@ -79,7 +79,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: ["style", "css-loader", "sass-loader"]
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

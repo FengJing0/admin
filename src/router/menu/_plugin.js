@@ -192,4 +192,3 @@ export const router = {
   ...menu,
   children: [].concat(...menu.children.map(e => e.children || e))
 }
-console.log(router)

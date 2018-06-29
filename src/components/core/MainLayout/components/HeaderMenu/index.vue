@@ -66,7 +66,6 @@ export default {
     },
     // 更新侧边栏
     refreshSideMenu () {
-      console.log(this.routeName)
       this.setSideMenu({
         sideMenu: this.routeTopLevelMenu ? this.routeTopLevelMenu : []
       })
