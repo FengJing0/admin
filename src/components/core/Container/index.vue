@@ -1,21 +1,20 @@
 <template>
   <div class="container-component"
        :class="{responsive}"
-       v-loading='ready'>
+       v-loading='loading'>
     <!--卡片容器-->
     <el-card v-if="type === 'card'"
-             style='max-height:calc(100% - 20px);width:calc(100% - 20px)'>
+             style='max-height:calc(100% - 20px);overflow: auto;'>
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <el-scrollbar style='height:100%'>
-        <slot></slot>
-      </el-scrollbar>
+      <!-- <el-scrollbar style='height:100%'> -->
+      <slot></slot>
+      <!-- </el-scrollbar> -->
     </el-card>
     <!--隐形-->
     <div v-if="type === 'ghost'"
-         class="dd-mr"
-         style='height:calc(100% - 20px)'>
+         style='height:100%'>
       <el-scrollbar style='height:100%'>
         <slot></slot>
       </el-scrollbar>
@@ -29,9 +28,7 @@
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <el-scrollbar style='height:100%'>
-        <slot></slot>
-      </el-scrollbar>
+      <slot></slot>
       <slot v-if="$slots.footer"
             slot="footer"
             name="footer"></slot>
@@ -55,12 +52,12 @@ export default {
     right: {
       type: Number,
       required: false,
-      default: 20
+      default: 0
     },
     bottom: {
       type: Number,
       required: false,
-      default: 20
+      default: 0
     },
     left: {
       type: Number,
@@ -73,7 +70,7 @@ export default {
       required: false,
       default: false
     },
-    ready: {
+    loading: {
       type: Boolean,
       required: false,
       default: false
@@ -119,10 +116,10 @@ export default {
 }
 // 在大于1920分辨率的时候 xl
 @media (min-width: 1921px) {
-  .container-component.responsive {
-    margin: 0px auto;
-    margin-bottom: 20px;
-    max-width: 1920px - 200px;
-  }
+  // .container-component.responsive {
+  //   margin: 0px auto;
+  //   margin-bottom: 20px;
+  //   max-width: 1920px - 200px;
+  // }
 }
 </style>

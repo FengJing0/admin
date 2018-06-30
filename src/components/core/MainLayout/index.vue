@@ -9,7 +9,8 @@
         <img v-else
              src="@/assets/image/logo/header.png">
       </div>
-      <el-tooltip placement="bottom">
+      <el-tooltip placement="bottom"
+                  v-if="hasSideMenu">
         <div slot="content">{{content}}</div>
         <div class="toggle-sidemenu-btn"
              @click="toggleAside">

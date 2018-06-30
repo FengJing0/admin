@@ -3,7 +3,7 @@ export default {
   path: '/',
   name: '',
   component: () => import('@/components/core/MainLayout/index.vue'),
-  meta: {requiresAuth: true},
+  meta: { requiresAuth: true },
   redirect: {
     name: 'index'
   },
@@ -11,13 +11,8 @@ export default {
     {
       path: 'index',
       name: 'index',
-      meta: {requiresAuth: true},
+      meta: { requiresAuth: true },
       component: () => import('@/pages/core/index/index.vue')
-    },
-    {
-      path: '404',
-      name: 'index-notFount',
-      component: () => import('@/pages/core/NotFount/index')
     }
   ]
 }

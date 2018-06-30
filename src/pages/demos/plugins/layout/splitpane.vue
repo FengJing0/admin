@@ -1,5 +1,6 @@
 <template>
   <Container>
+    <template slot='header'>区域划分</template>
     <div style="height: 400px;">
       <SplitPane :min-percent='10'
                  :default-percent='30'
