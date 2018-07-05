@@ -1,7 +1,7 @@
 <template>
-  <el-container class="layout-main"
+  <div class="layout-main"
                 :class="theme">
-    <el-header>
+    <div class="dd-layout-header">
       <div class="logo-group"
            :style="logoGroupStyle">
         <img v-if="collapse"
@@ -20,19 +20,19 @@
       </el-tooltip>
       <HeaderMenu></HeaderMenu>
       <HeaderRight></HeaderRight>
-    </el-header>
-    <el-container>
-      <el-aside :style="logoGroupStyle"
+    </div>
+    <div class="dd-layout-container">
+      <div class="dd-layout-aside" :style="logoGroupStyle"
                 v-if="hasSideMenu">
         <SideMenu :collapse="collapse"></SideMenu>
-      </el-aside>
-      <el-main>
+      </div>
+      <div class="dd-layout-main">
         <transition name="fade-transverse">
           <router-view></router-view>
         </transition>
-      </el-main>
-    </el-container>
-  </el-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

@@ -4,20 +4,19 @@
        v-loading='loading'>
     <!--卡片容器-->
     <el-card v-if="type === 'card'"
-             style='max-height:calc(100% - 20px);overflow: auto;'>
+             style='overflow: auto;position:relative;'>
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <!-- <el-scrollbar style='height:100%'> -->
-      <slot></slot>
-      <!-- </el-scrollbar> -->
-    </el-card>
-    <!--隐形-->
-    <div v-if="type === 'ghost'"
-         style='height:100%'>
       <el-scrollbar style='height:100%'>
         <slot></slot>
       </el-scrollbar>
+    </el-card>
+    <!--隐形-->
+    <div v-if="type === 'ghost'">
+      <!-- <el-scrollbar style='height:100%'> -->
+      <slot></slot>
+      <!-- </el-scrollbar> -->
     </div>
     <!--撑满-->
     <card-full v-if="type === 'card-full'"
@@ -37,6 +36,7 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
   props: {
     type: {
@@ -75,6 +75,35 @@ export default {
       required: false,
       default: false
     }
+  },
+  data () {
+    return {
+      BS: null
+    }
+  },
+  methods: {
+    scrollInit (node) {
+      this.BS = new BScroll(node, {
+        mouseWheel: true,
+        scrollbar: {
+          fade: true,
+          interactive: false
+        }
+      })
+    },
+    scrollDestroy () {
+      if (this.BS) {
+        this.BS.destroy()
+      }
+    }
+  },
+  mounted () {
+    if (this.type !== 'card-full') {
+      this.scrollInit(this.$el)
+    }
+  },
+  beforeDestroy () {
+    this.scrollDestroy()
   }
 }
 </script>
@@ -87,9 +116,17 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  overflow: auto;
+  overflow: hidden;
   .el-scrollbar__wrap {
     overflow-x: hidden;
+  }
+  .bscroll-indicator {
+    border-radius: inherit;
+    background-color: rgb(144, 147, 153);
+    opacity: 0;
+  }
+  &:hover .bscroll-indicator {
+    opacity: 0.3;
   }
 }
 

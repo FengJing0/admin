@@ -1,13 +1,14 @@
 @import '../public.scss';
 
 $color: $color-primary;
-
+// .#{$prefix}
 // 默认主题
 .layout-main {
   &.default {
     height: 100vh;
     width: 100vw;
     background-color: $color-bg;
+    $dd-theme-header-height: 60px;
     // [全局设置]
     // 关闭所有卡片的阴影
     .el-card {
@@ -17,7 +18,12 @@ $color: $color-primary;
       }
     }
     // [布局]
-    .el-header {
+    .#{$prefix}-layout-header {
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:$dd-theme-header-height;
       padding: 0px;
       .logo-group {
         transition: width .3s;
@@ -29,8 +35,8 @@ $color: $color-primary;
       }
       .toggle-sidemenu-btn {
         float: left;
-          height: 60px;
-          line-height: 60px;
+          height: $dd-theme-header-height;
+          line-height: $dd-theme-header-height;
           text-align: left;
           padding: 0 20px;
           @extend %unable-select;
@@ -55,8 +61,6 @@ $color: $color-primary;
             background-color: transparent;
           }
           &.is-active {
-            //border-bottom: none;
-            //border-top: 2px solid $color;
             border-bottom: 2px solid $color;
             background-color: transparent;
           }
@@ -65,7 +69,7 @@ $color: $color-primary;
       // 顶栏右侧的按钮
       .btn-group {
         float: right;
-        height: 60px;
+        height: $dd-theme-header-height;
         display: flex;
         align-items: center;
         .btn-text {
@@ -78,21 +82,18 @@ $color: $color-primary;
       }
     }
     // 顶栏下面
-    .el-container {
+    .#{$prefix}-layout-container {
+      position: absolute;
+      top:$dd-theme-header-height;
+      bottom: 0;
+      left:0;
+      right:0;
+      overflow: hidden;
+      display: flex;
       // 侧边栏
-      .el-aside {
+      .#{$prefix}-layout-aside {
         transition: width .3s;
         overflow: inherit;
-        
-        .dd-side-menu-empty {
-          background-color: rgba(#000, .03);
-          margin: $margin;
-          margin-top: 0px;
-          border-radius: 4px;
-          line-height: 100px;
-          text-align: center;
-          color: $color-text-sub;
-        }
         .el-menu {
           background-color: $color-bg;
           border-right: none;
@@ -121,7 +122,8 @@ $color: $color-primary;
           }
         }
       }
-      .el-main {
+      .#{$prefix}-layout-main {
+        flex-grow:1;
         padding: 0;
         position: relative;
         overflow: hidden;

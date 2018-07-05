@@ -2,15 +2,26 @@
   <Container type="ghost">
     <el-card class="dd-mb">
       <template slot="header">导出表格</template>
-      <el-button type="primary" @click="exportCsv">
+      <el-button type="primary"
+                 @click="exportCsv">
         <Icon name="download"></Icon>
         导出 CSV
       </el-button>
-      <el-button type="primary" @click="exportExcel">
+      <el-button type="primary"
+                 @click="exportExcel">
         <Icon name="download"></Icon>
         导出 Excel
       </el-button>
-      <Tables v-bind="table" class="dd-mt"></Tables>
+      <div>
+        <el-table v-bind="table"
+                  ref='tables'>
+          <el-table-column v-for="(item, index) in table.columns"
+                           :key="index"
+                           :prop="item.prop"
+                           :label="item.label">
+          </el-table-column>
+        </el-table>
+      </div>
     </el-card>
     <el-card>
       <Markdown url="/static/md/插件 - 导出.md"></Markdown>
@@ -61,5 +72,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
