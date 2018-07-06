@@ -7,12 +7,10 @@
       <slot name="header"></slot>
     </div>
     <div class="dd-card-full__body"
-         :style="bodyStyle">
-      <el-scrollbar style='height:100%;'>
-        <div class="dd-card-full__main">
-          <slot></slot>
-        </div>
-      </el-scrollbar>
+         ref="wrapper">
+      <div class='dd-card-full__main'>
+        <slot />
+      </div>
     </div>
     <div v-if="$slots.footer"
          class="dd-card-full__footer"
@@ -23,6 +21,8 @@
 </template>
 
 <script>
+// 插件
+import BScroll from 'better-scroll'
 export default {
   props: {
     top: {
@@ -49,12 +49,15 @@ export default {
   data () {
     return {
       headerHeight: 0,
-      footerHeight: 0
+      footerHeight: 0,
+      BS: null
     }
   },
   mounted () {
-    this.headerHeight = this.$slots.header ? this.$refs.header.offsetHeight : 0
-    this.footerHeight = this.$slots.footer ? this.$refs.footer.offsetHeight : 0
+    this.scrollInit()
+  },
+  beforeDestroy () {
+    this.scrollDestroy()
   },
   computed: {
     cardStyle () {
@@ -63,11 +66,27 @@ export default {
       right:${this.right}px;
       bottom:${this.bottom}px;
       left:${this.left}px`
+    }
+    // bodyStyle () {
+    //   return `
+    //   top:${this.headerHeight}px;
+    //   bottom:${this.footerHeight}px`
+    // }
+  },
+  methods: {
+    scrollInit () {
+      this.BS = new BScroll(this.$refs.wrapper, {
+        mouseWheel: true,
+        scrollbar: {
+          fade: true,
+          interactive: false
+        }
+      })
     },
-    bodyStyle () {
-      return `
-      top:${this.headerHeight}px;
-      bottom:${this.footerHeight}px`
+    scrollDestroy () {
+      if (this.BS) {
+        this.BS.destroy()
+      }
     }
   }
 }
@@ -83,38 +102,34 @@ export default {
   overflow: hidden;
   transition: 0.3s;
   color: $color-text-main;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   &:hover {
     box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6),
       0 2px 4px 0 rgba(232, 237, 250, 0.5);
   }
   .dd-card-full__header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 18px 20px;
+    padding: $margin;
     border-bottom: 1px solid #ebeef5;
     box-sizing: border-box;
-    width: 100%;
   }
   .dd-card-full__body {
-    position: absolute;
-    // padding: $margin;
+    flex-grow: 1;
     /*width:calc(100% - 40px);*/
-    left: 0;
-    right: 0;
-    overflow: auto;
+    overflow: hidden;
+    padding: $margin;
+    position: relative;
     .dd-card-full__main {
-      margin: $margin;
+      padding:$margin 0;
+      // position: relative;
+      // height:100%;
     }
   }
   .dd-card-full__footer {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    padding: 18px 20px;
     border-top: 1px solid #ebeef5;
     box-sizing: border-box;
-    width: 100%;
+    padding: $margin;
   }
 }
 </style>

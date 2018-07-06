@@ -1,5 +1,5 @@
 <template>
-  <div class='side-menu-wrap'>
+  <div style='height: 100%;position: relative;'>
     <div :style="{ height: `${asideHeight}px` }">
       <el-menu :collapse="collapse"
                :default-active='routeName'
@@ -94,17 +94,9 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .side-menu-wrap {
   height: 100%;
   position: relative;
-  .bscroll-indicator {
-    border-radius: inherit;
-    background-color: rgb(144, 147, 153);
-    opacity: 0;
-  }
-  &:hover .bscroll-indicator {
-    opacity: 0.3;
-  }
 }
 </style>

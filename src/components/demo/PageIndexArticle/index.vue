@@ -1,6 +1,7 @@
 <template>
   <div class="page-index-article-body">
-    <div class="page-index-article-body__logo" v-if="$slots.default">
+    <div class="page-index-article-body__logo"
+         v-if="$slots.default">
       <slot></slot>
     </div>
     <p class="page-index-article-body__title">{{title}}</p>
@@ -26,25 +27,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "@/assets/style/public.scss";
-  .page-index-article-body {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    img {
-      width:200px;
-    }
-    .page-index-article-body__title{
-      color:$color-text-main
-    }
-    .page-index-article-body__sub-title{
-      color:$color-text-sub
-    }
+@import '@/assets/style/public.scss';
+.page-index-article-body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 200px;
   }
+  .page-index-article-body__title {
+    color: $color-text-main;
+  }
+  .page-index-article-body__sub-title {
+    color: $color-text-sub;
+  }
+}
 </style>

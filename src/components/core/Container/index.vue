@@ -1,25 +1,22 @@
 <template>
   <div class="container-component"
        :class="{responsive}"
-       v-loading='loading'>
+       v-loading='loading'
+       ref="container">
     <!--卡片容器-->
     <el-card v-if="type === 'card'"
              style='overflow: auto;position:relative;'>
       <slot v-if="$slots.header"
             slot="header"
             name="header"></slot>
-      <el-scrollbar style='height:100%'>
-        <slot></slot>
-      </el-scrollbar>
+      <slot />
     </el-card>
     <!--隐形-->
     <div v-if="type === 'ghost'">
-      <!-- <el-scrollbar style='height:100%'> -->
-      <slot></slot>
-      <!-- </el-scrollbar> -->
+      <slot />
     </div>
     <!--撑满-->
-    <card-full v-if="type === 'card-full'"
+    <card-full v-if="type === 'card-full' && scorll === false"
                :top="top"
                :right="right"
                :bottom="bottom"
@@ -32,6 +29,20 @@
             slot="footer"
             name="footer"></slot>
     </card-full>
+    <!--撑满滚动-->
+    <card-full-bs v-if="type === 'card-full' && scorll === true"
+                  :top="top"
+                  :right="right"
+                  :bottom="bottom"
+                  :left="left">
+      <slot v-if="$slots.header"
+            slot="header"
+            name="header"></slot>
+      <slot></slot>
+      <slot v-if="$slots.footer"
+            slot="footer"
+            name="footer"></slot>
+    </card-full-bs>
   </div>
 </template>
 
@@ -74,6 +85,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    scorll: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   data () {
@@ -82,8 +98,8 @@ export default {
     }
   },
   methods: {
-    scrollInit (node) {
-      this.BS = new BScroll(node, {
+    scrollInit () {
+      this.BS = new BScroll(this.$refs.container, {
         mouseWheel: true,
         scrollbar: {
           fade: true,
@@ -99,11 +115,13 @@ export default {
   },
   mounted () {
     if (this.type !== 'card-full') {
-      this.scrollInit(this.$el)
+      this.scrollInit()
     }
   },
   beforeDestroy () {
-    this.scrollDestroy()
+    if (this.type !== 'card-full') {
+      this.scrollDestroy()
+    }
   }
 }
 </script>
@@ -117,17 +135,6 @@ export default {
   bottom: 0;
   right: 0;
   overflow: hidden;
-  .el-scrollbar__wrap {
-    overflow-x: hidden;
-  }
-  .bscroll-indicator {
-    border-radius: inherit;
-    background-color: rgb(144, 147, 153);
-    opacity: 0;
-  }
-  &:hover .bscroll-indicator {
-    opacity: 0.3;
-  }
 }
 
 .container-component.responsive {
