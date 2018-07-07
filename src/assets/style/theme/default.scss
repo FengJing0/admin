@@ -36,9 +36,9 @@ $color: $color-primary;
       .toggle-sidemenu-btn {
         float: left;
           height: $dd-theme-header-height;
-          line-height: $dd-theme-header-height;
+          margin-top:17px;
           text-align: left;
-          padding: 0 20px;
+          padding: 0 $margin;
           @extend %unable-select;
           i {
             font-size: 20px;
@@ -55,8 +55,8 @@ $color: $color-primary;
         border-bottom: none;
         background-color: transparent;
         .el-menu-item {
-          border-bottom: none;
-          border-top: 2px solid $color-bg;
+          // border-bottom: none;
+          // border-top: 2px solid $color-bg;
           &:hover {
             background-color: transparent;
           }
@@ -76,8 +76,7 @@ $color: $color-primary;
           color: $color-text-normal;
         }
         .el-dropdown {
-          user-select: none;
-          cursor: pointer;
+          @extend %unable-select
         }
       }
     }

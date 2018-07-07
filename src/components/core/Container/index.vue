@@ -122,6 +122,10 @@ export default {
     if (this.type !== 'card-full') {
       this.scrollDestroy()
     }
+  },
+  components: {
+    CardFull: () => import('../CardFull/CardFull.vue'),
+    CardFullBs: () => import('../CardFull/CardFull-bs.vue')
   }
 }
 </script>
